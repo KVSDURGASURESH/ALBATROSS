@@ -20,16 +20,7 @@ requirements = [
     # TODO: put package requirements here
     'ply',
     'decorator',
-    'six',
-    'jsonpath-rw>=1.2.0',
-    'pbr>=1.8',
-    'jsonpath-rw-ext',
-    'xlrd',
-    'xlwt',
-    'requests',
-    'xpath-py',
-    'mysql-connector',
-    'mysql'
+    'six'
 ]
 
 test_requirements = [
