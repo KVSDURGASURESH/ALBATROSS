@@ -20,7 +20,16 @@ requirements = [
     # TODO: put package requirements here
     'ply',
     'decorator',
-    'six'
+    'six',
+    'jsonpath-rw>=1.2.0',
+    'pbr>=1.8',
+    'jsonpath-rw-ext',
+    'xlrd',
+    'xlwt',
+    'requests',
+    'xpath-py',
+    'mysql'
+    'mysql-connector==2.1.4'
 ]
 
 test_requirements = [
@@ -30,7 +39,7 @@ test_requirements = [
 setup(
     name='Albatross',
     version='1.0.1',
-    cmdclass=versioneer.get_cmdclass(),
+    # cmdclass=versioneer.get_cmdclass(),
     description="Python Libraries with Generic (Excel, Shell, SQL, JSON/XML Parsers etc) and Hadoop (Storm,Hbase, Kafka etc ) Essentials!",
     long_description=readme + '\n\n' + history,
     author="DURGASURESH KAGITHA",
