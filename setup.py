@@ -18,7 +18,6 @@ with open(path.join(here, 'HISTORY.rst'), encoding='utf-8') as history_file:
 
 requirements = [
     # TODO: put package requirements here
-    'click',
     'ply',
     'decorator',
     'six',
@@ -29,7 +28,7 @@ requirements = [
     'xlwt',
     'requests',
     'xpath-py',
-    'mysql-connector==2.1.4'
+    'mysql-connector==2.1.6'
 ]
 
 test_requirements = [
@@ -38,7 +37,7 @@ test_requirements = [
 
 setup(
     name='Albatross',
-    version=versioneer.get_version(),
+    version='1.0.1',
     cmdclass=versioneer.get_cmdclass(),
     description="Python Libraries with Generic (Excel, Shell, SQL, JSON/XML Parsers etc) and Hadoop (Storm,Hbase, Kafka etc ) Essentials!",
     long_description=readme + '\n\n' + history,
