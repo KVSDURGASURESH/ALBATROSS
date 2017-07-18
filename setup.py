@@ -28,7 +28,8 @@ requirements = [
     'xlwt',
     'requests',
     'xpath-py',
-    'mysql-connector'
+    'mysql-connector',
+    'mysql'
 ]
 
 test_requirements = [
