@@ -4,23 +4,23 @@ from SHELLCONNECT import SHELLCONNECT
 
 
 class STORM:
-    def _startdatatopology(self, jarfile, subscriber_classname, appconfig_file, albo_logger):
+    def _startdatatopology(self, jarfile, subscriber_classname, topology_config, albo_logger=None):
         """This function is for starting the data topology for the first time.The parameters required
-                    are subscriber classname, appconfig file & the jar"""
+                    are subscriber classname, topology_config file & the jar"""
 
         self.jarfile = jarfile
-        self.appconfig_file = appconfig_file
+        self.topology_config = topology_config
         self.subscriber_classname = subscriber_classname
         self.albo_logger = albo_logger
-        # Starting the topology with the parameters passed
+       
         try:
-            regchemcmd = 'storm jar ' + jarfile + ' ' + subscriber_classname + ' ' + appconfig_file
+            regchemcmd = 'storm jar ' + jarfile + ' ' + subscriber_classname + ' ' + topology_config
             SHELLCONNECT()._execute(regchemcmd, albo_logger)
 
         except Exception as e:
             raise Exception('Error starting topology %s' % e)
 
-    def _topology_check(self, topology_name, topology_summary_get, albo_logger):
+    def _topology_check(self, topology_name, topology_summary_get, albo_logger=None):
         self.topology_name = topology_name
         self.topology_summary_get = topology_summary_get
         self.albo_logger = albo_logger
@@ -47,7 +47,7 @@ class STORM:
         except Exception as e:
             raise Exception(e)
 
-    def _topology_summary_check(self, topology_name, topology_summary_get, albo_logger):
+    def _topology_summary_check(self, topology_name, topology_summary_get, albo_logger=None):
         """This function check whether the topology is up and running. The parameters required
                             are topology name, url for the api page, and logger variable"""
 
@@ -74,7 +74,6 @@ class STORM:
                 for topologies in nimbustopolist.values():
                     for toponame in topologies:
                         if toponame['name'] == topology_name and toponame['status'] == 'ACTIVE':
-                            # albo_logger.info('Topology status: -- %s -- %s' % (toponame['name'], toponame['status']))
                             topoid = r'%s' % toponame['id']
                             return True, topoid
                 time.sleep(10)
@@ -86,7 +85,7 @@ class STORM:
         except Exception as e:
             raise Exception('Topology summary check failed: %s' % e)
 
-    def _topology_spout_check(self, topology_name, topology_info_base, albo_logger, topoid=None):
+    def _topology_spout_check(self, topology_name, topology_info_base, albo_logger=None, topoid=None):
         """ This function is to check whether all spout hosts are up and running. The parameters required are
             topology name, url for the api page, logger variable and the ID of the running topology"""
 
@@ -172,25 +171,7 @@ class STORM:
         except Exception as e:
             raise Exception('Topology spout check failed : %s' % e)
 
-    def _publish_data(self, publish_jar, publisher_classname, publisher_config, data_file, message_count, albo_logger):
-        """Function to publish data to solace"""
-
-        self.publish_jar = publish_jar
-        self.publisher_classname = publisher_classname
-        self.publisher_config = publisher_config
-        self.data_file = data_file
-        self.message_count = message_count
-        self.albo_logger = albo_logger
-
-        try:
-            publishcmd = 'java -cp ' + publish_jar + ' ' + publisher_classname + ' ' + publisher_config + ' ' + data_file + ' ' + message_count
-            SHELLCONNECT()._execute(publishcmd, albo_logger)
-            albo_logger.info('published ' + message_count + ' messages')
-
-        except Exception as e:
-            raise Exception(e)
-
-    def _stop_topology(self, topology_name, albo_logger):
+    def _stop_topology(self, topology_name, albo_logger=None):
         """Function to kill a specific topology and wait for a certain time"""
 
         self.topology_name = topology_name
