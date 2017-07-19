@@ -1,8 +1,8 @@
 import xlrd
 
-class EXCELFDP:
-    """EXCELFDP class contains definitions for many useful and custom utilities required to address the test capabilities
-       of the Test framework.It contains methods for reading and writing from/to an Excel workbook
+class EXCEL:
+    """EXCEL class contains definitions for many useful and custom utilities required to address the capabilities
+       of the Dev/Test framework.It contains methods for reading and writing from/to an Excel workbook
     """
 
     def __init__(self, workbook, worksheet):
@@ -35,7 +35,7 @@ class EXCELFDP:
         USAGE:
         _celladress4matchingvalue(matchstring)
 
-        matchstring : Specific string to be matched in the sheet ex: 'Cstone Feed Identifier'
+        matchstring : Specific string to be matched in the sheet ex: 'column headers'
 
         NOTE:
         This method/function can be used for any test involving Excel read
