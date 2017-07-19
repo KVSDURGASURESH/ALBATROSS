@@ -4,9 +4,9 @@ import xpath
 from xml.dom.minidom import parse as xmlparse
 
 
-class XMLXPATHFDP:
-    """JsonFDP class contains definitions for many useful and custom utilities required to address the test capabilities
-       of the Test framework.It contains methods for parsing json data
+class XMLXPATH:
+    """XMLXPATH class contains definitions for many useful and custom utilities required to address the capabilities
+       of the Test framework.It contains methods for parsing XML data
     """
 
     def __init__(self):
@@ -21,7 +21,7 @@ class XMLXPATHFDP:
         _xmlparser(datafile,xpathfile)
 
         datafile : file containing actual xml data
-        xpathfile : file containing all the xpath's mentioned in the CDM template (Sheet :Cstone-SOR-Lineage column:E)
+        xpathfile : file containing all the xpath's mentioned in a file
 
         NOTE:
         This method/function can be used for any test involving xml parsing using xpath's
@@ -81,9 +81,9 @@ class XMLXPATHFDP:
             raise Exception("Error Occurred : %s" % e)
 
 
-class JsonFDP:
-    """JsonFDP class contains definitions for many useful and custom utilities required to address the test capabilities
-    of the Test framework.It contains methods for parsing json data"""
+class Json:
+    """Json class contains definitions for many useful and custom utilities required to address the capabilities
+    of the Dev/Test framework.It contains methods for parsing json data"""
 
     def __init__(self):
         pass
@@ -97,7 +97,7 @@ class JsonFDP:
         _jsonparser(datafile,jpathfile)
 
         datafile : file containing actual json data
-        jpathfile : file containing all the jpath's mentioned in the CDM template (Sheet :Cstone-SOR-Lineage column:E)
+        jpathfile : file containing all the jpath's mentioned in the file
 
         NOTE:
         This method/function can be used for any test involving json parsing using jpath's
