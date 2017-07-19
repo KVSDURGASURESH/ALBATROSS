@@ -3,15 +3,15 @@ import subprocess
 
 
 class SHELLCONNECT:
-    """SHELLCONNECT class contains definitions for many useful and custom utilities required to address the test
-     capabilities of the Test framework.It contains methods for executing any sort of shell commands
+    """SHELLCONNECT class contains definitions for many useful and custom utilities required to address the 
+     capabilities of the Dev/Test framework.It contains methods for executing any sort of shell commands
     """
 
     def __init__(self):
 
         pass
 
-    def _execute(self, cmd, albo_logger, failonexit=False):
+    def _execute(self, cmd, albo_logger=None, failonexit=False):
         """ Function for executing any shell command
          USAGE:
          _execute('cmd')
@@ -42,7 +42,7 @@ class SHELLCONNECT:
             albo_logger.error('Error : %s ' % e)
             raise Exception(e)
 
-    def _execute_with_action(self, cmd, promptmsg, albo_logger, failonexit=False):
+    def _execute_with_action(self, cmd, promptmsg, albo_logger=None, failonexit=False):
         # type: (object, object) -> object
         # type: (object, object) -> object
         """
