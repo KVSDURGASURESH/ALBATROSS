@@ -4,8 +4,8 @@ import time
 
 
 class MYSQLCONNECT:
-    """MYSQLCONNECT class contains definitions for many useful and custom utilities required to address the test capabilities
-       of the Test framework.It contains methods for executing DDL & DML SQL Queries to MYSQL
+    """MYSQLCONNECT class contains definitions for many useful and custom utilities required to address the capabilities
+       of the Dev/Test framework.It contains methods for executing DDL & DML SQL Queries to MYSQL
     """
 
     def __init__(self, host, database, username, password, port=3306):
@@ -25,9 +25,6 @@ class MYSQLCONNECT:
         self.username = username
         self.password = password
         self.port = port
-    
-    def _name(self):
-        return "manoj"
 
     def _getdbconnection(self):
         """
@@ -59,7 +56,7 @@ class MYSQLCONNECT:
                 raise Exception('unexpected error. failed to connect to database')
         return cnx, cursor
 
-    def _sql_connect(self, sql_query, albo_logger, waittime=None):
+    def _sql_connect(self, sql_query, albo_logger=None, waittime=None):
 
         """Function for establishing a connection to Database with specified parameters in the init function
         USAGE:
