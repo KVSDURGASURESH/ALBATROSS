@@ -21,11 +21,10 @@ class PYTHONKAFKA:
         """
         self.topic = topic
         # KafkaConsumer(auto_offset_reset='earliest', enable_auto_commit=False)
-        KafkaConsumer(auto_offset_reset='latest', enable_auto_commit=False, group_id='smsgrp')
-        # brokers = 'lppbdsvd061.gso.aexp.com:9092,lppbdsvd560.gso.aexp.com:9092,lppbdsvd561.gso.aexp.com:9092'
+        KafkaConsumer(auto_offset_reset='latest', enable_auto_commit=False, group_id=None)
         consumer = KafkaConsumer(topic, bootstrap_servers=self.brokers)
         for msg in consumer:
-            print(msg)
+            return msg
 
     def _testpkg(self):
         return self.brokers
@@ -47,7 +46,6 @@ class PYTHONKAFKA:
         """
         topic = self.topic
         client = SimpleClient(self.brokers)
-        # topic = "test_fast_messages"
         partitions = client.topic_partitions[topic]
         offset_requests = [OffsetRequestPayload(topic, p, -1, 1) for p in partitions.keys()]
         offsets_responses = client.send_offset_request(offset_requests)
